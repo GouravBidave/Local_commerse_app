@@ -1,4 +1,4 @@
-from django.shortcuts import render
+# from django.shortcuts import render
 
 # Create your views here.
 from django.http import HttpResponse
@@ -9,6 +9,8 @@ from django.http import HttpResponse
 # def home(request):
 #     return render(request,'home.html')
 from django.shortcuts import render
+from django.shortcuts import redirect
+from .forms import ProductForm 
 
 def home(request):
 
@@ -23,5 +25,20 @@ def home(request):
     }
 
     return render(request, "home.html", context)
+
+
+def add_product(request):
+
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    else:
+        form = ProductForm()
+
+    return render(request, "add_product.html", {"form": form})
 
 
