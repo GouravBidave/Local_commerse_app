@@ -1,4 +1,4 @@
-{% comment %} <!DOCTYPE html>
+{% comment %} {% comment %} {% comment %} <!DOCTYPE html>
 <html>
 <head>
     <title>Local Commerce</title>
@@ -16,7 +16,7 @@
 <head>
     <title>Local Commerce</title>
 </head>
-<body>
+{% comment %} <body>
 
 <h1>Available Products 🛒</h1>
 
@@ -28,5 +28,13 @@
     {% endfor %}
 </ul>
 
-</body>
-</html>
+</body>  {% endcomment %}
+
+<ul>
+    {% for item in products %}
+        <li>
+            {{ item.name }} — ₹{{ item.price }}
+            <a href="/edit/{{ item.id }}/">Edit</a>
+        </li>
+    {% endfor %}
+</ul>
