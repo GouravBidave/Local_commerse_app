@@ -12,6 +12,8 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from .forms import ProductForm 
 from .models import Product
+from .models import Book
+from .models import Feedback
 from .forms import BookForm
 from .forms import EmployeeForm
 from .forms import MenuItemForm
@@ -141,3 +143,20 @@ def add_feedback(request):
         form = FeedbackForm
 
     return render(request,'feedback.html',{'form':form})   
+
+
+def feedback_list(request):
+
+    all_feedbacks = Feedback.objects.all()
+
+    context = {
+        'feedbacks' : all_feedbacks
+    }
+
+    return render (request,"dashbord.html", context)
+
+def show_book_info(request):
+
+    information = Book.objects.all()
+    context = {'books':information}
+    return render(request,"show_book.html",context)

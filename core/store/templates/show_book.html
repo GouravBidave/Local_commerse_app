@@ -1,0 +1,14 @@
+<h1> Book Dashboard</h1>
+
+
+{% for f in books %}
+    <div class="feedback-card">
+        <h3>BOOK: {{ f.title }}</h3>
+        <!-- Removed the "/5" unless you meant to show a rating -->
+        <p>Author Name: <strong>{{ f.author }}</strong></p> 
+        
+        <!-- Corrected the price variable syntax -->
+        <p>Pages: <span class="pages">{{ f.pages }}</span></p> 
+        <hr>
+    </div>
+{% endfor %}

@@ -1,0 +1,15 @@
+<h1>Customer Feedback Dashboard</h1>
+
+{% for f in feedbacks %}
+    <div class="feedback-card">
+        <h3>Customer: {{ f.name }}</h3>
+        <p>Rating: <strong>{{ f.rating }}/5</strong></p>
+        <p>Message: {{ f.message }}</p>
+        <hr> <!-- A simple horizontal line between items -->
+    </div>
+
+{% empty %}
+    <!-- If there are ZERO feedbacks in the database, show this: -->
+    <p>No feedback has been submitted yet.</p>
+
+{% endfor %}
