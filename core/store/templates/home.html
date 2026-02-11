@@ -29,12 +29,28 @@
 </ul>
 
 </body>  {% endcomment %}
-
+{% comment %} 
 <ul>
     {% for item in products %}
         <li>
             {{ item.name }} — ₹{{ item.price }}
             <a href="/edit/{{ item.id }}/">Edit</a>
+        </li>
+    {% endfor %}
+</ul> {% endcomment %}
+
+<ul>
+    {% for item in products %}
+        <li>
+            {{ item.name }} — ₹{{ item.price }}
+
+            <a href="/edit/{{ item.id }}/">Edit</a>
+
+            <form action="{% url 'delete_product' item.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+
         </li>
     {% endfor %}
 </ul>
